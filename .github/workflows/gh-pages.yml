@@ -18,6 +18,8 @@ jobs:
     - uses: actions/checkout@master
       with:
         node-version: '14'
-    # Run our deployment command
+    # Install dependency for react-script to run
+    - run: npm install
+    # Run deployment command
     - name: Deploying the static website to gh-pages
       run: npm run deploy
