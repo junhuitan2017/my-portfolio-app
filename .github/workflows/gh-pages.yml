@@ -1,0 +1,21 @@
+# Auto deploy app to gh-pages
+
+name: Auto Deployment to gh-pages
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  push:
+    branches:
+      - master
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Download our master branch
+    steps:
+    - uses: actions/checkout@master
+    # Run our deployment command
+    - name: Deploying the static website to gh-pages
+      run: npm run deploy
