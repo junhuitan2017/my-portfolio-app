@@ -16,6 +16,8 @@ jobs:
     # Download our master branch
     steps:
     - uses: actions/checkout@master
+      with:
+        node-version: '14'
     # Run our deployment command
     - name: Deploying the static website to gh-pages
       run: npm run deploy
