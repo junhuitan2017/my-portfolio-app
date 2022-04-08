@@ -18,6 +18,10 @@ jobs:
       uses: actions/checkout@master
     - name: Install dependency for react-script to run
       run: npm install
+    - name: Configure Git User
+      run: |
+        git config --global user.name "junhuitan2017"
+        git config --global user.email "akimotojh@gmail.com"
     # Run deployment command
     - name: Deploying the static website to gh-pages
       run: npm run deploy
