@@ -20,7 +20,12 @@ jobs:
       run: npm install
     # Run deployment command
     - name: Deploying the static website to gh-pages
-      run: npm run deploy
+      uses: pkgjs/gh-pages@master
+      with:
+        nojekyll: true
+        repo: pkgjs/gh-pages
+        commit: pages build from ${GITHUB_SHA}
+        build: npm run build
       env:
-        IS_DEPLOY: true
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        IS_DEPLOY: true
