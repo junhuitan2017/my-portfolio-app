@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import TimelineBackground from "./TimelineBackground";
 import TimelinePagination from "./TimelinePagination";
@@ -18,10 +18,14 @@ const SwipeContainer = styled.div`
 `;
 
 function Home(props) {
-    const [slideNum, setSlideNum] = useState(0);
-    const [breakpoint, setBreakpoint] = useState(0);
-
     const { height } = useWindowDimension();
+    const [slideNum, setSlideNum] = useState(-1);
+    const [breakpoint, setBreakpoint] = useState(-height * 0.8);
+
+    useEffect(() => {
+        setBreakpoint(0);
+        setSlideNum(0);
+    }, []);
 
     function handleWheel(e) {
         handleMovement(e.deltaY);

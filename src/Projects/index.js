@@ -1,17 +1,20 @@
 import styled from "styled-components";
+import { PROJECT_CONTENT } from "../constants/contents";
 import ProjectCard from "./ProjectCard";
 
 const ProjectWrapper = styled.div`
-    padding-top: 80px;
+    padding: 80px 40px 0;
     display: flex;
+    height: 100;
     flex-flow: row wrap;
-    justify-content: space-evenly;
+    justify-content: start;
+    gap: 40px;
 `
 
 function Projects() {
     return (
         <ProjectWrapper>
-            <ProjectCard />
+            {PROJECT_CONTENT.map((project, idx) => <ProjectCard key={`${project.title}`} index={idx} project={project}/>)}
         </ProjectWrapper>
     )
 }

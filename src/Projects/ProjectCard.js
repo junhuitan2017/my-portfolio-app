@@ -1,10 +1,8 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { ICONS } from "../constants/contents";
 
 const SURFACE_COLOR = "#fff";
 const CURVE = 40;
-const DISCORD_URL =
-    "https://discord.com/api/oauth2/authorize?client_id=961136076439834635&permissions=0&scope=applications.commands%20bot";
 
 const CardImage = styled.img`
     width: 100%;
@@ -64,26 +62,35 @@ const ThumbDesc = styled.div`
     width: 50%;
     color: white;
     font-weight: bold;
-`
+`;
 
 const CardDescription = styled.a`
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     height: 50%;
-    width: 85%;
     padding: 4px 0;
-    margin: auto;
     border-radius: 8px;
-    transition: .5s;
+    transition: 0.5s;
     text-decoration: none;
 
     :hover {
+        position: absolute;
+        height: fit-content;
+        width: 85%;
         background-color: ${({ background }) => background};
     }
 
     :hover ${ThumbDesc} {
         display: block;
     }
+`;
+
+const DescriptionContainer = styled.div`
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    margin-top: 16px;
 `;
 
 const CardContainer = styled.div`
@@ -93,36 +100,60 @@ const CardContainer = styled.div`
     overflow: hidden;
     height: 100%;
     max-width: 300px;
+    transition: 1s ease ${({ index }) => index * 0.2}s;
 
     :hover ${CardOverlay} {
         transform: translateY(0);
     }
+
+    ${({ isLoaded }) =>
+        isLoaded
+            ? `
+        opacity: 1;
+        transform: translateX(0);
+    `
+            : `
+        opacity: 0;
+        transform: translateX(100%);
+    `}
 `;
 
 function ProjectCard(props) {
+    const { index, project } = props;
+    const { title, description, img, icons } = project;
+
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        setIsLoaded(true);
+    }, []);
+
     return (
-        <CardContainer>
-            <CardImage src={ICONS.NOTHANKSLOGO} alt={"No thanks logo"} />
+        <CardContainer isLoaded={isLoaded} index={index}>
+            <CardImage src={img} alt={`${title} logo`} />
             <CardOverlay>
                 <CardHeader>
                     <CardArc>
                         <path />
                     </CardArc>
-                    <h3>No Thanks!</h3>
-                    <span>
-                        A mini project to recreate the card game "No Thanks!"
-                    </span>
+                    <h3>{title}</h3>
+                    <span>{description}</span>
                 </CardHeader>
-                <CardDescription href={DISCORD_URL} target={"_blank"} background={"#5663F7"}>
-                    <CardThumb background={"#5663F7"}>
-                        <img
-                            src={ICONS.DISCORD_WHITE}
-                            alt={"Discord"}
-                            width={"70%"}
-                        />
-                    </CardThumb>
-                    <ThumbDesc>Click to add bot to your discord server!</ThumbDesc>
-                </CardDescription>
+                <DescriptionContainer>
+                    {icons.map((icon, i) => (
+                        <CardDescription
+                            key={i}
+                            href={icon.url}
+                            target={"_blank"}
+                            background={icon.bg}
+                        >
+                            <CardThumb background={icon.bg}>
+                                {icon.img}
+                            </CardThumb>
+                            <ThumbDesc>{icon.description}</ThumbDesc>
+                        </CardDescription>
+                    ))}
+                </DescriptionContainer>
             </CardOverlay>
         </CardContainer>
     );
