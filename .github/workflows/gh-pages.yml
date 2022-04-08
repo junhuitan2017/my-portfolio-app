@@ -11,17 +11,19 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     # Download our master branch
     steps:
     - uses: actions/checkout@master
-      with:
-        node-version: '14'
     # Install dependency for react-script to run
-    - run: npm install
+    - run: |
+        npm install
+        npm run build
     # Run deployment command
     - name: Deploying the static website to gh-pages
-      run: npm run deploy
+      with:
+        branch: gh-pages
+        folder: build
       env:
         IS_DEPLOY: true
