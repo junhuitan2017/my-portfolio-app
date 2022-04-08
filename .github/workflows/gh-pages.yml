@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Download master branch
-      uses: actions/checkout@master
+      uses: actions/checkout@v2
     - name: Install dependency for react-script to run
       run: npm install
     - name: Configure Git User
