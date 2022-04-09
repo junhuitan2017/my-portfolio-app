@@ -5,7 +5,6 @@ import ProjectCard from "./ProjectCard";
 const ProjectWrapper = styled.div`
     padding: 80px 40px 0;
     display: flex;
-    height: 100;
     flex-flow: row wrap;
     justify-content: start;
     gap: 40px;

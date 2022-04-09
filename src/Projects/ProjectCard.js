@@ -4,11 +4,6 @@ import styled from "styled-components";
 const SURFACE_COLOR = "#fff";
 const CURVE = 40;
 
-const CardImage = styled.img`
-    width: 100%;
-    height: auto;
-`;
-
 const CardOverlay = styled.div`
     position: absolute;
     bottom: 0;
@@ -19,7 +14,7 @@ const CardOverlay = styled.div`
     height: 50%;
     border-radius: calc(${CURVE} * 1px) calc(${CURVE} * 1px) 0 0;
     background-color: ${SURFACE_COLOR};
-    transform: translateY(50%);
+    transform: translateY(45%);
     transition: 0.2s ease-in-out;
 `;
 
@@ -69,7 +64,7 @@ const CardDescription = styled.a`
     justify-content: space-evenly;
     align-items: center;
     height: 50%;
-    padding: 4px 0;
+    padding: 8px 0;
     border-radius: 8px;
     transition: 0.5s;
     text-decoration: none;
@@ -98,8 +93,11 @@ const CardContainer = styled.div`
     border: 1px solid black;
     border-radius: calc(${CURVE} * 1px);
     overflow: hidden;
-    height: 100%;
-    max-width: 300px;
+    height: 400px;
+    width: 300px;
+    background-image: url(${({ imgSrc }) => imgSrc});
+    background-size: cover;
+    background-position: 50% 50%;
     transition: 1s ease ${({ index }) => index * 0.2}s;
 
     :hover ${CardOverlay} {
@@ -129,8 +127,8 @@ function ProjectCard(props) {
     }, []);
 
     return (
-        <CardContainer isLoaded={isLoaded} index={index}>
-            <CardImage src={img} alt={`${title} logo`} />
+        <CardContainer isLoaded={isLoaded} index={index} imgSrc={img}>
+            {/* <CardImage src={img} alt={`${title} logo`} /> */}
             <CardOverlay>
                 <CardHeader>
                     <CardArc>

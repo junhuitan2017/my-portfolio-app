@@ -70,4 +70,35 @@ export const PROJECT_CONTENT = [
             },
         ],
     },
+    {
+        title: "Hungry Pingu",
+        description: `A mini project that require players to strategize their moves to collect as much fishes they can`,
+        img: "http://104.215.188.54:3002/images/pengu1.gif",
+        icons: [
+            {
+                img: (
+                    <img
+                        src={ICONS.GITHUB_WHITE}
+                        alt={"Github"}
+                        width={"75%"}
+                    />
+                ),
+                bg: "#000",
+                description: "Click to check out my repository!",
+                url: "https://github.com/Jaywiz77/myFish",
+            },
+            {
+                img: (
+                    <img
+                        src={ICONS.DISCORD_WHITE}
+                        alt={"Discord"}
+                        width={"70%"}
+                    />
+                ),
+                bg: "#5663F7",
+                description: "Click to add bot to your discord server!",
+                url: "https://discord.com/api/oauth2/authorize?client_id=962250878860013608&permissions=0&scope=applications.commands%20bot",
+            },
+        ],
+    },
 ];

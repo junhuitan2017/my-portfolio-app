@@ -51,7 +51,7 @@ const HomeNavLink = styled(NavLink)`
     :hover {
         border-bottom: 2px solid white;
     }
-`
+`;
 
 function NavBar(props) {
     const [barOpen, setBarOpen] = useState(false);
@@ -63,25 +63,35 @@ function NavBar(props) {
     return (
         <NavContainer isOpen={barOpen}>
             <SocialContainer>
-                <div>
+                <a
+                    href="https://www.instagram.com/mrjunhuii/"
+                    target={"_blank"}
+                    rel="noreferrer"
+                >
                     <img
                         src={ICONS.INSTAGRAM}
                         alt={"Instagram Icon"}
                         width={36}
                     />
-                </div>
-                <div>
+                </a>
+                <a
+                    href="https://www.linkedin.com/in/jun-hui-tan-034239163/"
+                    target={"_blank"}
+                    rel="noreferrer"
+                >
                     <img
                         src={ICONS.LINKEDIN}
                         alt={"LinkedIn Icon"}
                         width={36}
                     />
-                </div>
+                </a>
             </SocialContainer>
             <h1>MrJunHuii</h1>
             <LinkContainer>
                 <HomeNavLink to={"/my-portfolio-app"}>Home</HomeNavLink>
-                <HomeNavLink to={"/my-portfolio-app/projects"}>Games</HomeNavLink>
+                <HomeNavLink to={"/my-portfolio-app/projects"}>
+                    Games
+                </HomeNavLink>
             </LinkContainer>
         </NavContainer>
     );
