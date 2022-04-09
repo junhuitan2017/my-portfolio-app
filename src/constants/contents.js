@@ -6,6 +6,7 @@ export const ICONS = {
     DISCORD_WHITE: `${PUBLIC_FOLDER}/image/discord-white.png`,
     GITHUB_WHITE: `${PUBLIC_FOLDER}/image/github-white.png`,
     NOTHANKSLOGO: `${PUBLIC_FOLDER}/image/cover.png`,
+    PENGULOGO: `${PUBLIC_FOLDER}/image/pengu1.gif`,
 };
 
 export const TIMELINE_CONTENT = [
@@ -73,7 +74,7 @@ export const PROJECT_CONTENT = [
     {
         title: "Hungry Pingu",
         description: `A mini project that require players to strategize their moves to collect as much fishes they can`,
-        img: "http://104.215.188.54:3002/images/pengu1.gif",
+        img: ICONS.PENGULOGO,
         icons: [
             {
                 img: (
