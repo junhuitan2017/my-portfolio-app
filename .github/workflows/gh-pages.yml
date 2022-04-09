@@ -23,7 +23,7 @@ jobs:
       uses: pkgjs/gh-pages@master
       with:
         nojekyll: true
-        repo: pkgjs/gh-pages
+        repo: junhuitan2017/my-portfolio-app
         commit: pages build from ${GITHUB_SHA}
         build: npm run build
       env:
